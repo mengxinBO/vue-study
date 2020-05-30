@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./lib/vue.js"></script>
+    <style>
+        .red{
+            color: red;
+        }
+
+        .thin{  
+            /* 变瘦 */
+            font-weight: 200;
+        }
+
+        .italic{
+            font-style: italic;
+        }
+
+        .active{
+            /* 设置字符间距 */
+            letter-spacing: 0.5em;  
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- <h1 class="red thin">是你先喜欢我的，为什么冷淡的也是你</h1> -->
+
+        <!-- 第一种使用方式，直接传递一个数组，注意：这里的class 需要使用 v-bind做数据绑定 -->
+        <!-- <h1 :class="['thin','italic']">是你先喜欢我的，为什么冷淡的也是你</h1> -->
+
+        <!-- 在数组中使用三元表达式 -->
+        <!-- <h1 :class="['thin','italic',flag?'active':'']">是你先喜欢我的，为什么冷淡的也是你</h1> -->
+        
+        <!-- 在数组中使用对象来代替三元表达式，提高代码的可读性 -->
+        <!-- <h1 :class="['thin','italic',{'active':flag}]">是你先喜欢我的，为什么冷淡的也是你</h1> -->
+
+        <!-- 在为class使用v-bind绑定对象的时候，对象的属性是类名，由于 对象的属性可带引号，也可不带。属性的值是一个标识符 -->
+        <h1 :class="{ red:true, thin: true,italic: false ,active: false }">是你先喜欢我的，为什么冷淡的也是你</h1>
+
+    </div>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                flag:true
+            },
+            methods:{
+
+            }
+        })
+    </script>
+</body>
+</html>
